@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include kleopatra_themes *.css
+recursive-include kleopatra_themes *.csv
+recursive-include kleopatra_themes *.html
+recursive-include kleopatra_themes *.ico
+recursive-include kleopatra_themes *.js
+recursive-include kleopatra_themes *.json
+recursive-include kleopatra_themes *.md
+recursive-include kleopatra_themes *.png
+recursive-include kleopatra_themes *.py
+recursive-include kleopatra_themes *.svg
+recursive-include kleopatra_themes *.txt
+recursive-exclude kleopatra_themes *.pyc
