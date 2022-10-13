@@ -25,7 +25,7 @@
    "__islocal": 1,
    "__unsaved": 1,
    "fieldname": "description",
-   "fieldtype": "Data",
+   "fieldtype": "Text",
    "label": "Açıklama",
    "reqd": 0
   },
