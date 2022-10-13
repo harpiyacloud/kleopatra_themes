@@ -1,0 +1,38 @@
+<header class="sticky top-0 z-50">
+	<nav id="topnav" class="defaultscroll is-sticky bg-white dark:bg-slate-900">
+		<div class="container">
+			<!-- Logo container-->
+			<a class="logo pl-0" href="index.html">
+				{%- if brand_html -%}
+				{{ brand_html }}
+				{%- elif banner_image -%}
+					<img src="/assets/kleopatra_themes/images/klopatra.png" class="inline-block dark:hidden" alt="" width="170px">
+					<img src="/assets/kleopatra_themes/images/klopatra-light.png" class="hidden dark:inline-block" alt="" width="170px">
+				{%- else -%}
+					<span>{{ (harpiya.get_hooks("brand_html") or [_("Anasayfa")])[0] }}</span>
+				{%- endif -%}
+			</a>
+
+			<!-- End Logo container-->
+			<div class="menu-extras">
+				<div class="menu-item">
+					<!-- Mobile menu toggle-->
+					<a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+						<div class="lines">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</a>
+					<!-- End mobile menu toggle-->
+				</div>
+			</div>
+
+			
+
+			
+			{% include "templates/includes/navbar/navbar_items.html" %}
+			
+		</div><!--end container-->
+	</nav><!--end header-->
+</header>

@@ -15,8 +15,26 @@ app_license = "MIT"
 # app_include_js = "/assets/kleopatra_themes/js/kleopatra_themes.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/kleopatra_themes/css/kleopatra_themes.css"
-# web_include_js = "/assets/kleopatra_themes/js/kleopatra_themes.js"
+web_include_css = [
+    "/assets/kleopatra_themes/libs/tobii/css/tobii.min.css",
+    "/assets/kleopatra_themes/libs/tiny-slider/tiny-slider.css",
+    "/assets/kleopatra_themes/libs/@iconscout/unicons/css/line.css",
+    "/assets/kleopatra_themes/css/icons.min.css",
+    "/assets/kleopatra_themes/css/tailwind.min.css",
+    ]
+web_include_js = [
+    "/assets/kleopatra_themes/libs/tiny-slider/min/tiny-slider.js",
+    "/assets/kleopatra_themes/libs/tobii/js/tobii.min.js",
+    "/assets/kleopatra_themes/libs/feather-icons/feather.min.js",
+    "/assets/kleopatra_themes/js/plugins.init.js",
+    "/assets/kleopatra_themes/js/app.js",
+    "/assets/kleopatra_themes/js/website_utils.js",
+    ]
+
+website_route_rules = [
+	{"from_route": "/product/<category>", "to_route": "Product"},
+]
+
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "kleopatra_themes/public/scss/website"

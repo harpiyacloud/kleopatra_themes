@@ -1,0 +1,110 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "creation": "2022-10-13 15:29:18.419328",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "product_category",
+  "code",
+  "column_break_4",
+  "published",
+  "product_image",
+  "kartela_image",
+  "route",
+  "section_break_8",
+  "images"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Başlık",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "product_category",
+   "fieldtype": "Link",
+   "label": "Kategori",
+   "options": "Product Category",
+   "reqd": 1
+  },
+  {
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "label": "Ürün Kodu"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "label": "Yayınlandı"
+  },
+  {
+   "fieldname": "product_image",
+   "fieldtype": "Attach Image",
+   "label": "Ürün Resmi"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Yönlendirme",
+   "unique": 1
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "images",
+   "fieldtype": "Table",
+   "label": "Resimler",
+   "options": "Product Images"
+  },
+  {
+   "fieldname": "kartela_image",
+   "fieldtype": "Attach Image",
+   "label": "Kartela Görseli"
+  }
+ ],
+ "has_web_view": 1,
+ "image_field": "product_image",
+ "index_web_pages_for_search": 1,
+ "is_published_field": "published",
+ "links": [],
+ "modified": "2022-10-13 15:34:57.950483",
+ "modified_by": "Administrator",
+ "module": "Kleopatra Themes",
+ "name": "Product",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "route": "product",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "website_search_field": "title"
+}

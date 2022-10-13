@@ -1,0 +1,53 @@
+<!-- Footer Start -->
+<footer class="footer bg-dark-footer relative text-gray-200 dark:text-gray-200">    
+	<div class="container">
+		<div class="grid grid-cols-12">
+			<div class="col-span-12">
+				<div class="py-[60px] px-0">
+					<div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
+
+						{% if footer_items -%}
+							{% include "templates/includes/footer/footer_grouped_links.html" %}
+						{% endif %}
+
+						
+						{% include "templates/includes/footer/footer_extension.html" %}
+					</div><!--end grid-->
+				</div><!--end col-->
+			</div>
+		</div><!--end grid-->
+	</div><!--end container-->
+
+	<div class="py-[30px] px-0 border-t border-slate-800">
+		<div class="container text-center">
+			<div class="grid md:grid-cols-2 items-center">
+				<div class="md:text-left text-center">
+					<p class="mb-0">© 2022 Kleopatra Dügme. </p>
+				</div>
+				<div class="md:text-right text-center">
+					<p class="mb-0">Designed by <a href="https://harpiya.cloud" target="_blank" class="text-reset">Harpiya</a>. </p>
+				</div>
+			</div><!--end grid-->
+		</div><!--end container-->
+	</div>
+</footer><!--end footer-->
+<!-- Footer End -->
+
+
+<!-- Back to top -->
+<a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fixed hidden text-lg rounded-full z-10 bottom-5 right-5 h-9 w-9 text-center bg-indigo-600 text-white leading-9"><i class="uil uil-arrow-up"></i></a>
+<!-- Back to top -->
+
+<!-- Switcher -->
+<div class="fixed top-1/4 -right-1 z-3">
+	<span class="relative inline-block rotate-90">
+		<input type="checkbox" class="checkbox opacity-0 absolute" id="chk" />
+		<label class="label bg-slate-900 dark:bg-white shadow dark:shadow-gray-800 cursor-pointer rounded-full flex justify-between items-center p-1 w-14 h-8" for="chk">
+			<i class="uil uil-moon text-[20px] text-yellow-500"></i>
+			<i class="uil uil-sun text-[20px] text-yellow-500"></i>
+			<span class="ball bg-white dark:bg-slate-900 rounded-full absolute top-[2px] left-[2px] w-7 h-7"></span>
+		</label>
+	</span>
+</div>
+<!-- Switcher -->
+

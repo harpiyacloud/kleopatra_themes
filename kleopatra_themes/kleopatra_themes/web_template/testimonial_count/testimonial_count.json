@@ -1,0 +1,73 @@
+{
+ "__unsaved": 1,
+ "creation": "2022-10-13 14:32:31.502828",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Başlık",
+   "reqd": 0
+  },
+  {
+   "fieldname": "subtitle",
+   "fieldtype": "Small Text",
+   "label": "Alt Başlık",
+   "reqd": 0
+  },
+  {
+   "fieldname": "count_title_1",
+   "fieldtype": "Data",
+   "label": "Sayım Başlık 1",
+   "reqd": 0
+  },
+  {
+   "fieldname": "count_1",
+   "fieldtype": "Data",
+   "label": "Sayı 1",
+   "reqd": 0
+  },
+  {
+   "fieldname": "count_title_2",
+   "fieldtype": "Data",
+   "label": "Sayım Başlık 2",
+   "reqd": 0
+  },
+  {
+   "fieldname": "count_2",
+   "fieldtype": "Data",
+   "label": "Sayı 2",
+   "reqd": 0
+  },
+  {
+   "fieldname": "count_title_3",
+   "fieldtype": "Data",
+   "label": "Sayım Başlık 3",
+   "reqd": 0
+  },
+  {
+   "fieldname": "count_3",
+   "fieldtype": "Data",
+   "label": "Sayım 3",
+   "reqd": 0
+  },
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Arkaplan Resmi",
+   "reqd": 0
+  }
+ ],
+ "idx": 0,
+ "modified": "2022-10-13 14:33:50.362551",
+ "modified_by": "Administrator",
+ "module": "Kleopatra Themes",
+ "name": "Testimonial Count",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

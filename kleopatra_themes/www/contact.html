@@ -1,0 +1,174 @@
+{% extends "templates/web.html" %}
+{% block title %}{{ _(title) or _("İletişim") }}{% endblock %}
+
+{% block breadcrumbs %}
+<section class="relative table w-full py-32 lg:py-40 bg-no-repeat bg-center" style="background-image: url('/assets/kleopatra_themes/images/bg-products.jpg');">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black"></div>
+    <div class="container">
+        <div class="grid grid-cols-1 pb-8 text-center mt-10">
+            <h3 class="mb-3 text-3xl leading-normal font-medium text-white">{{ _(title) or _("İletişim") }}</h3>
+        </div><!--end grid-->
+    </div><!--end container-->
+    
+    <div class="absolute text-center z-10 bottom-5 right-0 left-0 mx-3">
+        <ul class="breadcrumb tracking-[0.5px] breadcrumb-light mb-0 inline-block">
+            {%- set parents = parents[-3:] %}
+			{% set count = (parents | length) + 1 %}
+			{% for parent in parents %}
+            <li class="inline breadcrumb-item uppercase text-[13px] font-bold duration-500 ease-in-out text-white hover:text-white"><a href="{{ url_prefix }}{{ parent.route | abs_url }}" class="text-white">{{ _(parent.title) or _(parent.label) or _(parent.name) or "" }}</a></li>
+            {% endfor %}
+            <li class="inline breadcrumb-item uppercase text-[13px] font-bold duration-500 ease-in-out text-white hover:text-white">{{ _(title) }}</li>
+        </ul>
+    </div>
+</section><!--end section-->
+<div class="relative">
+    <div class="shape absolute right-0 sm:-bottom-px -bottom-[2px] left-0 overflow-hidden z-1 text-white dark:text-slate-900">
+        <svg class="w-full h-auto" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+        </svg>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_content %}
+ <section class="relative md:py-24 py-16">
+    <div class="container">
+        <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-[30px]">
+        
+
+            <div class="text-center px-6 mt-6">
+                <div class="w-20 h-20 bg-indigo-600/5 text-indigo-600 rounded-xl text-3xl flex align-middle justify-center items-center shadow-sm dark:shadow-gray-800 mx-auto">
+                    <i class="uil uil-envelope"></i>
+                </div>
+
+                <div class="content mt-7">
+                    <h5 class="title h5 text-xl font-medium">{{ _('E-posta') }}</h5>
+                    
+                    <div class="mt-5">
+                        <a href="mailto:info@kleopatrabutton.com" class="btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">info@kleopatrabutton.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center px-6 mt-6">
+                <div class="w-20 h-20 bg-indigo-600/5 text-indigo-600 rounded-xl text-3xl flex align-middle justify-center items-center shadow-sm dark:shadow-gray-800 mx-auto">
+                    <i class="uil uil-map-marker"></i>
+                </div>
+
+                <div class="content mt-7">
+                    <h5 class="title h5 text-xl font-medium">{{ _('Mağaza') }}</h5>
+                    <p class="text-slate-400 mt-3">M. Nesih Özmen Mah. Savaş Cad. No:16 / A Güngören / İSTANBUL</p>
+                    
+                    <div class="mt-5">
+                        <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.583253360257!2d28.88537621473059!3d41.01249392711551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabb1975c1106d%3A0x5c844ac8b2c0f898!2zTWVobWV0IE5lc2loIMOWem1lbiwgU2F2YcWfIENkIE5vOjE2L0EsIDM0MTYwIEfDvG5nw7ZyZW4vxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1665688582812!5m2!1str!2str"
+                        data-type="iframe" class="video-play-icon read-more lightbox btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">{{ _('Google haritalarda görüntüle') }}</a>
+                    </div>
+
+                    <div class="mt-5">
+                        <a href="tel:+902129396697" class="btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">{{ _("Telefon") }}: +90 (212) 939 66 97</a><br>
+                        <a href="tel:+905337033275" class="btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">{{ _("Mobil") }}: +90 (533) 703 32 75</a>
+                       
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center px-6 mt-6">
+                <div class="w-20 h-20 bg-indigo-600/5 text-indigo-600 rounded-xl text-3xl flex align-middle justify-center items-center shadow-sm dark:shadow-gray-800 mx-auto">
+                    <i class="uil uil-map-marker"></i>
+                </div>
+
+                <div class="content mt-7">
+                    <h5 class="title h5 text-xl font-medium">{{ _('Fabrika') }}</h5>
+                    <p class="text-slate-400 mt-3">Sanayi Mah. Başaklı Sokak No:11 Güngören / İSTANBUL</p>
+                    
+                    <div class="mt-5">
+                        <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.0897195437446!2d28.880479314731048!3d41.023293026450816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabade292575ab%3A0x8feef2e435f6e033!2zU2FuYXlpLCBCYcWfYWtsxLEgU2suIE5vOjExLCAzNDE2NSBHw7xuZ8O2cmVuL8Swc3RhbmJ1bA!5e0!3m2!1str!2str!4v1665688643215!5m2!1str!2str"
+                        data-type="iframe" class="video-play-icon read-more lightbox btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">{{ _('Google haritalarda görüntüle') }}</a>
+                    </div>
+
+                    <div class="mt-5">
+                        <a href="tel:+902126437272" class="btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">{{ _("Telefon") }}: +90 (212) 643 72 72 pbx</a><br>
+                        <a href="#" class="btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">{{ _("Faks") }}: +90 (212) 643 72 72</a><br>
+                        <a href="tel:+905305455267" class="btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">{{ _("Mobil") }}: +90 (530) 545 52 67</a><br>
+                        <a href="tel:+905313897111" class="btn btn-link text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">{{ _("Whatsapp") }}: +90 (531) 389 71 11</a>
+                    </div>
+                </div>
+            </div>
+        </div><!--end grid-->
+    </div><!--end container-->
+
+    <div class="container md:mt-24 mt-16">
+        <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
+            <div class="lg:col-span-7 md:col-span-6">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.587829753815!2d28.885401514878584!3d41.012393779300396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabb1975b3cbf5%3A0x4bf89734112e8733!2sKleopatra%20D%C3%BC%C4%9Fme%20%26%20Aksesuar!5e0!3m2!1str!2str!4v1664222426574!5m2!1str!2str" style="border:0" class="w-full h-[500px]" allowfullscreen></iframe>
+            </div>
+
+            <div class="lg:col-span-5 md:col-span-6 mt-8 md:mt-0">
+                <div class="lg:ml-5">
+                    <div class="bg-white dark:bg-slate-900 rounded-md shadow dark:shadow-gray-800 p-6">
+                        <h3 class="mb-6 text-2xl leading-normal font-medium">{{ _('İletişim Formu !') }}</h3>
+
+                            <p class="mb-0" id="error-msg"></p>
+                            <div id="simple-msg"></div>
+                            <div class="grid lg:grid-cols-12 lg:gap-6">
+                                <div class="lg:col-span-6 mb-5">
+                                    <div class="text-left">
+                                        <label for="name" class="font-semibold">{{ _('Adınız Soyadınız') }}:</label>
+                                        <div class="form-icon relative mt-2">
+                                            <i data-feather="user" class="w-4 h-4 absolute top-3 left-4"></i>
+                                            <input name="name" id="name" type="text" class="form-input pl-11" placeholder="{{ _('Adınız Soyadınız') }} :">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="lg:col-span-6 mb-5">
+                                    <div class="text-left">
+                                        <label for="email" class="font-semibold">{{ _('E-posta Adresiniz') }}:</label>
+                                        <div class="form-icon relative mt-2">
+                                            <i data-feather="mail" class="w-4 h-4 absolute top-3 left-4"></i>
+                                            <input name="email" id="email" type="email" class="form-input pl-11" placeholder="{{ _('E-posta Adresiniz') }} :">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1">
+                                <div class="mb-5">
+                                    <div class="text-left">
+                                        <label for="subject" class="font-semibold">{{ _('Konu') }}:</label>
+                                        <div class="form-icon relative mt-2">
+                                            <i data-feather="book" class="w-4 h-4 absolute top-3 left-4"></i>
+                                            <input name="subject" id="subject" class="form-input pl-11" placeholder="{{ _('Konu') }} :">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-5">
+                                    <div class="text-left">
+                                        <label for="comments" class="font-semibold">{{ _('Mesajınız') }}:</label>
+                                        <div class="form-icon relative mt-2">
+                                            <i data-feather="message-circle" class="w-4 h-4 absolute top-3 left-4"></i>
+                                            <textarea name="message"  id="message" class="form-input pl-11 h-28" placeholder="{{ _('Mesajınız') }} :"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md justify-center flex items-center btn-send">{{ _('Mesajı Gönder') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container-fluid relative">
+    <div class="grid grid-cols-1">
+        <div class="w-full leading-[0] border-0">
+        </div>
+    </div>
+</div>
+
+<script>
+	{% include "templates/includes/contact.js" %}
+</script>
+{% endblock %}

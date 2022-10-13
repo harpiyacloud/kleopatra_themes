@@ -1,0 +1,120 @@
+<ul class="lang-button list-none mb-0" style="float: right; margin-left: 15px; padding-left: 15px;">
+	<li class="inline pl-1 mb-0">
+		<div class="form-group mb-0 hide" id="language-switcher">
+			<select class="form-control"></select>
+		</div>
+	</li>
+</ul>
+{%- if call_to_action -%}
+<ul class="buy-button list-none mb-0 d-none d-md-block">
+	<li class="inline pl-1 mb-0">
+			<a class="btn rounded-full bg-red-600 hover:bg-red-700 border-red-600 hover:border-red-700 text-white" href="{{ call_to_action_url | abs_url }}"  target="_blank" >
+				{{ call_to_action }}
+			</a>
+	</li>
+</ul>
+{%- endif -%}
+
+{% macro render_item(item, submenu=False, parent=False) %}
+{% if item.child_items %}
+
+{% if parent %}
+
+{%- set dropdown_id = 'id-' + harpiya.utils.generate_hash('Dropdown', 12) -%}
+<li class="has-submenu parent-parent-menu-item">
+	<a href="javascript:void(0)" id="{{ dropdown_id }}">
+		{{ _(item.label) }}
+		<span class="menu-arrow"></span>
+	</a>
+  	<ul class="submenu" aria-labelledby="{{ dropdown_id }}">
+		{% for child in item.child_items %}
+			{{ render_item(child, True) }}
+	  {% endfor %}
+	</ul>
+</li>
+{% else %}
+{%- set dropdown_id = 'id-' + harpiya.utils.generate_hash('Dropdown', 12) -%}
+<li class="has-submenu parent-parent-menu-item">
+	<a href="javascript:void(0)" id="{{ dropdown_id }}">
+		{{ _(item.label) }}
+		<span class="submenu-arrow"></span>
+	</a>
+	<ul class="submenu" aria-labelledby="{{ dropdown_id }}">
+		{% for child in item.child_items %}
+			{{ render_item(child, True) }}
+	{% endfor %}
+	</ul>
+</li>
+{% endif %}
+
+{% else %}
+
+{% set url = item.url or '' %}
+{% set url = url if url.startswith('#') else url | abs_url %}
+
+{% if parent %}
+<li>
+	<a href="{{ url }}"
+		{% if item.open_in_new_tab %} target="_blank" {% endif %}>
+		{{ _(item.label) }}
+	</a>
+</li>
+{% else %}
+<li><a href="{{ url }}"
+	{% if item.open_in_new_tab %} target="_blank" {% endif %}>
+	{{ _(item.label) }}
+</a></li>
+{% endif %}
+
+{% endif %}
+{% endmacro %}
+<div id="navigation">
+{% if top_bar_items -%}
+<ul class="navigation-menu">
+	{%- for item in top_bar_items -%}
+		{% if not item.parent_label and not item.right -%}
+			{{ render_item(item, parent=True) }}
+		{%- endif -%}
+	{%- endfor %}
+</ul>
+{%- endif %}
+<ul class="navigation-menu">
+	{% include "templates/includes/navbar/navbar_search.html" %}
+	{%- for item in top_bar_items -%}
+		{% if not item.parent_label and item.right -%}
+			{{ render_item(item, parent=True) }}
+		{%- endif -%}
+	{%- endfor %}
+	{% if not only_static %}
+		{% block navbar_right_extension %}{% endblock %}
+	{% endif %}
+
+	{% if show_sidebar and sidebar_items %}
+	<div class="d-block d-lg-none">
+		<hr>
+		{% for item in sidebar_items -%}
+		<li class="nav-item">
+			{% if item.type != 'input' %}
+				<a href="{{ item.route }}" class="nav-link {{ 'text-dark' if pathname==item.route else 'text-muted'}}"
+					{% if item.target %}target="{{ item.target }}"{% endif %}>
+					{{ _(item.title or item.label) }}
+				</a>
+			{% endif %}
+		</li>
+		{%- endfor %}
+		<hr>
+	</div>
+	{% endif %}
+
+	{% if read_only_mode %}
+		<div
+			class="indicator-pill yellow no-indicator-dot align-self-center"
+			title="{{ _("Bu site salt okunur modda, tam işlevsellik yakında geri yüklenecek.") }}"
+		>
+			{{ _("Salt Okunur Modu") }}
+		</div>
+	{% endif %}
+
+
+</ul>
+</div>

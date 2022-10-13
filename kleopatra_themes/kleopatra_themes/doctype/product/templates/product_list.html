@@ -1,0 +1,111 @@
+{% extends "templates/web.html" %}
+{% block title %}{{ title or _("Ürünler") }}{% endblock %}
+{% block breadcrumbs %}
+<section class="relative table w-full py-32 lg:py-40 bg-no-repeat bg-center" style="background-image: url('/assets/kleopatra_themes/images/bg-products.jpg');">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black"></div>
+    <div class="container">
+        <div class="grid grid-cols-1 pb-8 text-center mt-10">
+            <h3 class="mb-3 text-3xl leading-normal font-medium text-white">{{ _(title) or _("Ürünler") }}</h3>
+        </div><!--end grid-->
+    </div><!--end container-->
+    
+    <div class="absolute text-center z-10 bottom-5 right-0 left-0 mx-3">
+        <ul class="breadcrumb tracking-[0.5px] breadcrumb-light mb-0 inline-block">
+            {%- set parents = parents[-3:] %}
+			{% set count = (parents | length) + 1 %}
+			{% for parent in parents %}
+            <li class="inline breadcrumb-item uppercase text-[13px] font-bold duration-500 ease-in-out text-white hover:text-white"><a href="{{ url_prefix }}{{ parent.route | abs_url }}" class="text-white">{{ _(parent.title) or _(parent.label) or _(parent.name) or "" }}</a></li>
+            {% endfor %}
+            <li class="inline breadcrumb-item uppercase text-[13px] font-bold duration-500 ease-in-out text-white hover:text-white">{{ _(title) }}</li>
+        </ul>
+    </div>
+</section><!--end section-->
+<div class="relative">
+    <div class="shape absolute right-0 sm:-bottom-px -bottom-[2px] left-0 overflow-hidden z-1 text-white dark:text-slate-900">
+        <svg class="w-full h-auto" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+        </svg>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_content %}
+<section class="relative md:py-24 py-16" data-doctype="{{ doctype }}" data-txt="{{ txt or '[notxt]' | e }}">
+    <div class="container website-list" data-doctype="{{ doctype }}" data-txt="{{ txt or '[notxt]' | e }}">
+        <div id="grid" class="md:flex justify-center mx-auto mt-4">
+            {% if not result -%}
+            <div class="col-md-12">
+                <div class="text-muted" style="min-height: 300px;">
+                    {{ no_result_message or _("Henüz ürün eklenmedi") }}
+                </div>
+            </div>
+            {% else %}
+                <div class="col-md-12">
+                    <div class="row result">
+                        {% for item in result %}
+                            {{ item }}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="row justify-content-center">
+                <div class="col-md-2 mt-10">
+                    <button class="btn btn-light btn-more btn {% if not show_more -%} hidden {%- endif %}">{{ _("Daha fazla") }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container md:mt-24 mt-16">
+        <div class="grid grid-cols-1 text-center">
+            <span class="text-slate-400 mb-4">{{ _("Özel tasarımlarınız için") }}</span>
+            <h3 class="md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">{{ _("Ürün tasarımına mı ihtiyacınız var?") }}<br> {{ _("İletişime Geçin!") }}</h3>
+
+            <div class="mt-6">
+                <a href="/contact" class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-full"><i class="uil uil-phone"></i> {{ _("İletişim") }}</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+{% block script %}
+    <script>
+        harpiya.ready(() => {
+            let result_wrapper = $(".website-list .result");
+            let next_start = {{ next_start or 0 }};
+
+            $(".website-list .btn-more").on("click", function () {
+                let $btn = $(this);
+                let args = $.extend(harpiya.utils.get_query_params(), {
+                    doctype: "Product",
+                    category: "{{ harpiya.form_dict.category or '' }}",
+                    limit_start: next_start,
+                    pathname: location.pathname,
+                });
+                $btn.prop("disabled", true);
+                harpiya.call('harpiya.www.list.get', args)
+                    .then(r => {
+                        console.log(r.message)
+                        var data = r.message;
+                        next_start = data.next_start;
+                        $.each(data.result, function (i, d) {
+                            $(d).appendTo(result_wrapper);
+                        });
+                        toggle_more(data.show_more);
+                    })
+                    .always(() => {
+                        $btn.prop("disabled", false);
+                    });
+            });
+
+            function toggle_more(show) {
+                if (!show) {
+                    $(".website-list .more-block").addClass("hide");
+                }
+            }
+        });
+    </script>
+{% endblock %}

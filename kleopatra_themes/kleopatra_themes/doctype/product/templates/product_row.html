@@ -1,0 +1,11 @@
+<div class="lg:w-1/3 md:w-1/3 p-1 picture-item" data-groups='["designing"]'>
+	<div class="group relative block overflow-hidden rounded-md transition-all duration-500">
+		<a href="/{{ doc.route }}" class="transition-all duration-500 group-hover:scale-105" title="{{ doc.title }}">
+			<img src="{{ doc.product_image }}" class="" alt="{{ doc.title }}">
+		</a>
+		<div class="absolute -bottom-52 group-hover:bottom-2 right-2 left-2 transition-all duration-500 bg-white dark:bg-slate-900 p-4 rounded shadow dark:shadow-gray-800">
+			<a href="/{{ doc.route }}" class="hover:text-indigo-600 text-lg transition duration-500 font-medium">{{ doc.title }}</a>
+			<h6 class="text-slate-400">{{ doc.category.title }}</h6>
+		</div>
+	</div>
+</div>
