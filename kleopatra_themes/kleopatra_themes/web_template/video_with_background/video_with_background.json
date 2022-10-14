@@ -1,61 +1,46 @@
 {
- "__islocal": true,
  "__unsaved": 1,
  "creation": "2022-10-13 14:46:21.234025",
  "docstatus": 0,
  "doctype": "Web Template",
  "fields": [
   {
-   "__islocal": 1,
-   "__unsaved": 1,
    "fieldname": "title",
    "fieldtype": "Data",
    "label": "Başlık",
    "reqd": 0
   },
   {
-   "__islocal": 1,
-   "__unsaved": 1,
    "fieldname": "subtitle",
    "fieldtype": "Data",
    "label": "Alt Başlık",
    "reqd": 0
   },
   {
-   "__islocal": 1,
-   "__unsaved": 1,
    "fieldname": "description",
-   "fieldtype": "Text",
+   "fieldtype": "Small Text",
    "label": "Açıklama",
    "reqd": 0
   },
   {
-   "__islocal": 1,
-   "__unsaved": 1,
    "fieldname": "video_id",
    "fieldtype": "Data",
    "label": "Video ID",
    "reqd": 0
   },
   {
-   "__islocal": 1,
-   "__unsaved": 1,
    "fieldname": "image",
    "fieldtype": "Attach Image",
    "label": "Video Manşet Resmi",
    "reqd": 0
   },
   {
-   "__islocal": 1,
-   "__unsaved": 1,
    "fieldname": "btn",
    "fieldtype": "Data",
    "label": "Buton",
    "reqd": 0
   },
   {
-   "__islocal": 1,
-   "__unsaved": 1,
    "fieldname": "bnt_rul",
    "fieldtype": "Data",
    "label": "Buton URL",
@@ -63,7 +48,7 @@
   }
  ],
  "idx": 0,
- "modified": "2022-10-13 14:46:21.234025",
+ "modified": "2022-10-14 22:01:17.722782",
  "modified_by": "Administrator",
  "module": "Kleopatra Themes",
  "name": "Video with Background",
