@@ -3,6 +3,7 @@ from harpiya import _
 from harpiya.website.website_generator import WebsiteGenerator
 from harpiya.website.utils import clear_cache
 from harpiya.utils import sanitize_html
+from kleopatra_themes.utils import paginate
 from slugify import slugify
 
 
@@ -49,6 +50,12 @@ def get_list_context(context=None):
         # show_search = True,
         title=_('Ürünler')
     )
+    
+    page = frappe.form_dict.page
+    
+    pagination = paginate(doctype='Property', page=page) #pass to pagination
+    context.prev = pagination.get('prev')
+    context.next = pagination.get('next')
 
     category = harpiya.utils.escape_html(harpiya.local.form_dict.product_category or harpiya.local.form_dict.category)
     if category:
