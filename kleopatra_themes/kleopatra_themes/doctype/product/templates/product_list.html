@@ -117,11 +117,6 @@
                 }
             }
 
-        
-        });
-    </script>
-    <script>
-        harpiya.ready(() => {
             $('.btn-prev, .btn-next').click((e) => {
                 const $btn = $(e.target);
                 $btn.prop('disabled', true);
@@ -131,6 +126,7 @@
                 let path = window.location.pathname + '?' + harpiya.utils.get_url_from_dict(query_params);
                 window.location.href = path;
             });
+        
         });
     </script>
 {% endblock %}
