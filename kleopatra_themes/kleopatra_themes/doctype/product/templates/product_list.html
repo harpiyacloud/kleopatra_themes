@@ -84,44 +84,18 @@
 {% block script %}
     <script>
         harpiya.ready(() => {
-            let result_wrapper = $(".website-list .result");
-            let next_start = {{ next_start or 0 }};
+            
 
-            $(".website-list .btn-more").on("click", function () {
+            $('.btn-prev, .btn-next').click((e) => {
                 let $btn = $(this);
-                let args = $.extend(harpiya.utils.get_query_params(), {
+                $btn.prop('disabled', true);
+                const start = $btn.data('start');
+                let query_params = $.extend(harpiya.utils.get_query_params(), {
                     doctype: "Product",
                     category: "{{ harpiya.form_dict.category or '' }}",
                     limit_start: next_start,
                     pathname: location.pathname,
                 });
-                $btn.prop("disabled", true);
-                harpiya.call('harpiya.www.list.get', args)
-                    .then(r => {
-                        console.log(r.message)
-                        var data = r.message;
-                        next_start = data.next_start;
-                        $.each(data.result, function (i, d) {
-                            $(d).appendTo(result_wrapper);
-                        });
-                        toggle_more(data.show_more);
-                    })
-                    .always(() => {
-                        $btn.prop("disabled", false);
-                    });
-            });
-
-            function toggle_more(show) {
-                if (!show) {
-                    $(".website-list .more-block").addClass("hide");
-                }
-            }
-
-            $('.btn-prev, .btn-next').click((e) => {
-                const $btn = $(e.target);
-                $btn.prop('disabled', true);
-                const start = $btn.data('start');
-                let query_params = harpiya.utils.get_query_params();
                 query_params.start = start;
                 let path = window.location.pathname + '?' + harpiya.utils.get_url_from_dict(query_params);
                 window.location.href = path;
