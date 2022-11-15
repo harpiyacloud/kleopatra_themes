@@ -93,9 +93,9 @@
                 let query_params = $.extend(harpiya.utils.get_query_params(), {
                     doctype: "Product",
                     category: "{{ harpiya.form_dict.category or '' }}",
-                    limit_start: next_start,
                     pathname: location.pathname,
                 });
+                console.log(query_params;)
                 query_params.start = start;
                 let path = window.location.pathname + '?' + harpiya.utils.get_url_from_dict(query_params);
                 window.location.href = path;
