@@ -1,7 +1,7 @@
 {% extends "templates/web.html" %}
 {% block title %}{{ title or _("Ürünler") }}{% endblock %}
 {% block breadcrumbs %}
-<section class="relative table w-full py-32 lg:py-40 bg-no-repeat bg-center" style="background-image: url('/assets/kleopatra_themes/images/bg-products.jpg');">
+<section class="relative table w-full py-10 lg:py-10 bg-no-repeat bg-center" style="background-image: url('/assets/kleopatra_themes/images/bg-products.jpg');">
     <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black"></div>
     <div class="container">
         <div class="grid grid-cols-1 pb-8 text-center mt-10">
@@ -54,28 +54,6 @@
                     <button class="btn btn-light btn-more btn {% if not show_more -%} hidden {%- endif %}">{{ _("Daha fazla") }}</button>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-12 text-center">
-                  <div class="site-pagination">
-                    {% if harpiya.form_dict.type %}
-                      {% if prev  %}
-                      <a href="/?page={{prev}}" class="btn btn-warning">Previous</a>
-                      {% endif %}
-                      {% if next %}
-                      <a href="/?page={{next}}" class="btn btn-primary">Next</a>
-                      {% endif %}
-                    {% else %}
-                      {% if prev  %}
-                      <a href="/?page={{prev}}" class="btn btn-warning">Previous</a>
-                      {% endif %}
-                      {% if next %}
-                      <a href="/?page={{next}}" class="btn btn-primary">Next</a>
-                      {% endif %}
-                    {% endif %}
-                  </div>
-                </div>
-              </div>
         </div>
     </div>
 
@@ -110,6 +88,7 @@
                 $btn.prop("disabled", true);
                 harpiya.call('harpiya.www.list.get', args)
                     .then(r => {
+                        console.log(r.message)
                         var data = r.message;
                         next_start = data.next_start;
                         $.each(data.result, function (i, d) {

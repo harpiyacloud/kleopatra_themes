@@ -1,9 +1,7 @@
 import harpiya
 
-def paginate(doctype, page=0, conditions=" ", paginate_by=6):
+def paginate(doctype, page=0, conditions=" ", paginate_by=6, query=None):
     prev, next, search = 0, 0, False
-    query = f"""SELECT name, name, product_category, code,
-                FROM `tab{doctype}` {conditions} ORDER BY creation DESC """
 
     if(page):
         page = int(page)
