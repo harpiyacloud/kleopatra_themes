@@ -95,6 +95,7 @@
                             $(d).appendTo(result_wrapper);
                         });
                         toggle_more(data.show_more);
+                        $btn.add_paging_section(r.message);
                     })
                     .always(() => {
                         $btn.prop("disabled", false);
@@ -106,6 +107,56 @@
                     $(".website-list .more-block").addClass("hide");
                 }
             }
+
+            function add_paging_section() {
+                let paging_html = `
+                        <div class="row product-paging-area mt-5">
+                            <div class="col-3">
+                            </div>
+                            <div class="col-9 text-right">
+                    `;
+                    let query_params = harpiya.utils.get_query_params();
+                    let start = query_params.start ? cint(JSON.parse(query_params.start)) : 0;
+                    let page_length = 20;
+        
+                    let prev_disable = start > 0 ? "" : "disabled";
+                    let next_disable = (this.product_count > page_length) ? "" : "disabled";
+        
+                    paging_html += `
+                        <button class="btn btn-default btn-prev" data-start="${ start - page_length }"
+                            style="float: left" ${prev_disable}>
+                            ${ __("Prev") }
+                        </button>`;
+        
+                    paging_html += `
+                        <button class="btn btn-default btn-next" data-start="${ start + page_length }"
+                            ${next_disable}>
+                            ${ __("Next") }
+                        </button>
+                    `;
+        
+                    paging_html += `</div></div>`;
+        
+                    $(".page_content").append(paging_html);
+                    this.bind_paging_action();
+            }
+
+            function bind_paging_action() {
+                let me = this;
+                $('.btn-prev, .btn-next').click((e) => {
+                    const $btn = $(e.target);
+                    me.from_filters = false;
+        
+                    $btn.prop('disabled', true);
+                    const start = $btn.data('start');
+        
+                    let query_params = harpiya.utils.get_query_params();
+                    query_params.start = start;
+                    let path = window.location.pathname + '?' + harpiya.utils.get_url_from_dict(query_params);
+                    window.location.href = path;
+                });
+            }
+        
         });
     </script>
 {% endblock %}
