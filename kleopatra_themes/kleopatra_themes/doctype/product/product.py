@@ -51,9 +51,9 @@ def get_list_context(context=None):
         title=_('Ürünler')
     )
     
-    page = frappe.form_dict.page
+    page = harpiya.form_dict.page
     
-    pagination = paginate(doctype='Property', page=page) #pass to pagination
+    pagination = paginate(doctype='Product', page=page) #pass to pagination
     context.prev = pagination.get('prev')
     context.next = pagination.get('next')
 
