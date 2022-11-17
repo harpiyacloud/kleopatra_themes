@@ -22,11 +22,11 @@
 
 {%- set dropdown_id = 'id-' + harpiya.utils.generate_hash('Dropdown', 12) -%}
 <li class="has-submenu parent-parent-menu-item">
-	<a href="javascript:void(0)" id="{{ dropdown_id }}">
+	<a href="javascript:void(0)" >
 		{{ _(item.label) }}
-		<span class="menu-arrow"></span>
 	</a>
-  	<ul class="submenu" aria-labelledby="{{ dropdown_id }}">
+	<span class="menu-arrow"></span>
+  	<ul class="submenu" >
 		{% for child in item.child_items %}
 			{{ render_item(child, True) }}
 	  {% endfor %}
@@ -35,11 +35,11 @@
 {% else %}
 {%- set dropdown_id = 'id-' + harpiya.utils.generate_hash('Dropdown', 12) -%}
 <li class="has-submenu parent-parent-menu-item">
-	<a href="javascript:void(0)" id="{{ dropdown_id }}">
+	<a href="javascript:void(0)" >
 		{{ _(item.label) }}
-		<span class="submenu-arrow"></span>
 	</a>
-	<ul class="submenu" aria-labelledby="{{ dropdown_id }}">
+	<span class="submenu-arrow"></span>
+	<ul class="submenu" >
 		{% for child in item.child_items %}
 			{{ render_item(child, True) }}
 	{% endfor %}

@@ -84,10 +84,10 @@
                     limit_start: next_start,
                     pathname: location.pathname,
                 });
+                
                 $btn.prop("disabled", true);
                 harpiya.call('harpiya.www.list.get', args)
                     .then(r => {
-                        console.log(r.message)
                         var data = r.message;
                         next_start = data.next_start;
                         $.each(data.result, function (i, d) {

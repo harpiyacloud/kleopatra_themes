@@ -64,7 +64,8 @@ def get_list_context(context=None):
                                 {"label": _("Ürünler"), "route": "/product"}]
     else:
         list_context.parents = [{"label": _("Anasayfa"), "route": "/"}]
-
+        
+    
     return list_context
 
 
