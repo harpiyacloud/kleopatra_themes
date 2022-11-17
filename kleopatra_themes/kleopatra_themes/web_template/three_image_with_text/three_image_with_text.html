@@ -13,7 +13,7 @@
                     {% endif %}
                     {% if image_3 %}
                     <div class="col-span-6">
-                        <div class="grid grid-cols-1 gap-6">
+                        <div class="{% if image_1 and image_2 %}grid grid-cols-1 gap-6{% endif %}">
                             <img src="{{ image_3 }}" class="shadow rounded-md" alt="">
                         </div>
                     </div>
